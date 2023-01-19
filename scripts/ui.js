@@ -21,7 +21,7 @@ export const onFailure = (error) => {
 }
 
 export const onCreateRunSuccess = () => {
-    messageContainer.innerText = 'You have created a character'
+    messageContainer.innerText = 'You have logged a run'
 }
 
 export const onShowRunSuccess = (run) => {
@@ -34,6 +34,27 @@ export const onShowRunSuccess = (run) => {
         <p>Duration: ${run.duration}</p>
         <p>Average Speed: ${run.averageSpeed}</p>
         <p>ID: ${run._id}</p>
+
+        <form data-id="${run._id}">
+            <input type="text" name="discription" value="${run.discription}" />
+            <input type="number" name="distance" value="${run.distance}" />
+            <input type="text" name="surface" value="${run.surface}" />
+            <input type="number" name="difficulty" value="${run.difficulty}" />
+            <input type="number" name="duration" value="${run.duration}" />
+            <input type="number" name="averageSpeed" value="${run.averageSpeed}" />
+            <input type="submit" value="Update Run" />
+        </form>
+
+        <button data-id="${run._id}">Delete Run</button>
+
     `
 	showRunContainer.appendChild(div)
+}
+
+export const onUpdateRunSuccess = () => {
+    messageContainer.innerText = 'Run successfully updated'
+}
+
+export const onDeleteRunSuccess = () => {
+    messageContainer.innerText = 'Run successfully deleted'
 }
